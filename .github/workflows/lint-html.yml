@@ -1,0 +1,19 @@
+name: HTML Lint Check
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  lint-html:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取仓库代码
+        uses: actions/checkout@v4
+
+      - name: 安装html校验工具
+        run: npm install -g htmlhint
+
+      - name: 执行HTML语法检查
+        run: htmlhint *.html
